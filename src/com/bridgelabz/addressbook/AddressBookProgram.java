@@ -2,14 +2,13 @@ package com.bridgelabz.addressbook;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class AddressBookProgram {
-
     static Scanner sc = new Scanner(System.in);
     static ArrayList<ContactItems> contactList = new ArrayList<>();
     // Main method
     public static void main(String[] args)
     {
 
-        System.out.println("Welcome to the Address book program");  // Welcome statement
+        System.out.println("---Welcome to the Address book program---"); // Welcome statement
         AddressBookProgram addressBookProgram = new AddressBookProgram();
         addressBookProgram.addContactList();
     }
@@ -40,11 +39,8 @@ public class AddressBookProgram {
         System.out.println("Enter email : ");
         contactItems.email = sc.next();
         contactList.add(contactItems);
-
     }
-
     public void editContact() {
-
         System.out.println("Enter the first name of contact you wish to edit");
         String edit = sc.nextLine();
         System.out.println("Press 1 - To edit first name");
@@ -121,7 +117,6 @@ public class AddressBookProgram {
             }
         }
     }
-
     //method to delete contacs in AddressBook
     public void deleteContact(ArrayList<ContactItems> contactList)
     {
@@ -130,16 +125,16 @@ public class AddressBookProgram {
         contactList.removeIf(contactItems -> contactItems.firstName.equals(delete));
     }
     public void addContactList() {
+        //ability to add multiple persons  by
         while (true) {
-            System.out.println("Press 0 - Display all contacts");
-            System.out.println("Press 1 - Add contact");
-            System.out.println("Press 2 - Edit contact");
-            System.out.println("press 3 -delete contact");
-            System.out.println("Press 6 - Exit");
+            System.out.println("Press 0 :- Display all contacts");
+            System.out.println("Press 1 :- Add contact");
+            System.out.println("Press 2 :- Edit contact");
+            System.out.println("press 3 :-delete contact");
+            System.out.println("Press 6 :- Exit");
 
             int option = sc.nextInt();
             sc.nextLine();
-
             switch (option) {
                 case 0 -> display(contactList);
                 case 1 -> addContact(null, contactList);
@@ -151,4 +146,5 @@ public class AddressBookProgram {
             }
         }
     }
-   }
+
+}
