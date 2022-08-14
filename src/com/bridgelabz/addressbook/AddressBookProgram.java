@@ -5,57 +5,44 @@ public class AddressBookProgram {
 
     static Scanner sc = new Scanner(System.in);
     static ArrayList<ContactItems> contactList = new ArrayList<>();
-
     // Main method
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
-        System.out.println("Welcome to the Address book program"); // Welcome statement
+        System.out.println("Welcome to the Address book program");  // Welcome statement
         AddressBookProgram addressBookProgram = new AddressBookProgram();
         addressBookProgram.addContactList();
     }
-
     public void display(ArrayList<ContactItems> contactList)//Display Address book
     {
-        for (ContactItems contactItems : contactList) {
+        for (ContactItems contactItems : contactList)
+        {
             System.out.println(contactItems);
         }
     }
-
     //method to add new contacts in addressbook
     public void addContact(ContactItems contactItems, ArrayList<ContactItems> contactList) {
-
         contactItems = new ContactItems();
-
         System.out.println("Enter first name : ");
         contactItems.firstName = sc.next();
-
         System.out.println("Enter last name : ");
         contactItems.lastName = sc.next();
-
         System.out.println("Enter address : ");
         contactItems.address = sc.next();
-
-
         System.out.println("Enter city : ");
         contactItems.city = sc.next();
-
         System.out.println("Enter state : ");
         contactItems.state = sc.next();
-
         System.out.println("Enter zip code : ");
         contactItems.zip = sc.nextInt();
-
         System.out.println("Enter phone number : ");
         contactItems.phoneNumber = sc.nextLong();
-
         System.out.println("Enter email : ");
         contactItems.email = sc.next();
-
         contactList.add(contactItems);
 
     }
 
-    //method to edit contact in contact book
     public void editContact() {
 
         System.out.println("Enter the first name of contact you wish to edit");
@@ -135,13 +122,21 @@ public class AddressBookProgram {
         }
     }
 
-    // method to show conatctList in addressBook
+    //method to delete contacs in AddressBook
+    public void deleteContact(ArrayList<ContactItems> contactList)
+    {
+        System.out.println("Enter the first name of the contact you wish to delete");
+        String delete = sc.next();
+        contactList.removeIf(contactItems -> contactItems.firstName.equals(delete));
+    }
     public void addContactList() {
         while (true) {
             System.out.println("Press 0 - Display all contacts");
             System.out.println("Press 1 - Add contact");
             System.out.println("Press 2 - Edit contact");
+            System.out.println("press 3 -delete contact");
             System.out.println("Press 6 - Exit");
+
             int option = sc.nextInt();
             sc.nextLine();
 
@@ -149,10 +144,11 @@ public class AddressBookProgram {
                 case 0 -> display(contactList);
                 case 1 -> addContact(null, contactList);
                 case 2 -> editContact();
+                case 3 -> deleteContact(contactList);
             }
             if (option == 6) {
                 break;
             }
         }
     }
-}
+   }
